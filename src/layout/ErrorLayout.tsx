@@ -3,13 +3,13 @@ import type { FC, ReactNode } from 'react'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 
-import RootLayout from '@/layout/RootLayout'
+import { RootLayout } from '@/layout/RootLayout'
 
 interface ErrorLayoutProps {
   children: ReactNode
 }
 
-const ErrorLayout: FC<ErrorLayoutProps> = ({ children }) => {
+export const ErrorLayout: FC<ErrorLayoutProps> = ({ children }) => {
   return (
     <RootLayout>
       <Box className="__d-flex">
@@ -22,5 +22,3 @@ const ErrorLayout: FC<ErrorLayoutProps> = ({ children }) => {
     </RootLayout>
   )
 }
-
-export default ErrorLayout

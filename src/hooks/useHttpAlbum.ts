@@ -2,7 +2,6 @@ import type { AxiosRequestConfig } from 'axios'
 import { useTranslation } from 'next-i18next'
 import { append, compose, map } from 'ramda'
 import { useCallback } from 'react'
-import { useDispatch } from 'react-redux'
 import useSWR, { useSWRConfig } from 'swr'
 
 import { POST_PAGE_SIZE } from '@/constants/album'
@@ -20,6 +19,7 @@ import { generateUuid } from '@/utils/app'
 import { deleteFilesObject, uploadFile } from '@/utils/file'
 
 import { usePostPageQueryParams } from './usePostPageQueryParams'
+import { useAppDispatch } from './useRedux'
 
 export const useCategories = ({ isReady }: { isReady: boolean }) => {
   const { data, error, isValidating } = useSWR<Category[]>(
@@ -36,7 +36,7 @@ export const useCategories = ({ isReady }: { isReady: boolean }) => {
 
 export const useCreateCategory = () => {
   const { t } = useTranslation('common')
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { mutate } = useSWRConfig()
 
   const execute = useCallback(
@@ -75,7 +75,7 @@ export const useCreateCategory = () => {
 
 export const useUpdateCategory = () => {
   const { t } = useTranslation('common')
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { mutate } = useSWRConfig()
 
   const execute = useCallback(
@@ -114,7 +114,7 @@ export const useUpdateCategory = () => {
 
 export const useDeleteCategory = () => {
   const { t } = useTranslation('common')
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { mutate } = useSWRConfig()
 
   const execute = useCallback(
@@ -189,7 +189,7 @@ export const usePosts = ({
 
 export const useCreatePost = () => {
   const { t } = useTranslation('common')
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { postPageQueryParams } = usePostPageQueryParams()
   const { mutate } = useSWRConfig()
 
@@ -271,7 +271,7 @@ export const useCreatePost = () => {
 
 export const useUpdatePost = () => {
   const { t } = useTranslation('common')
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { postPageQueryParams } = usePostPageQueryParams()
   const { mutate } = useSWRConfig()
 
@@ -322,7 +322,7 @@ export const useUpdatePost = () => {
 
 export const useDeletePost = () => {
   const { t } = useTranslation('common')
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { postPageQueryParams } = usePostPageQueryParams()
   const { mutate } = useSWRConfig()
 

@@ -1,11 +1,11 @@
 import { useCallback } from 'react'
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 
 import { useAlbumAssetMaxWidth } from '@/hooks/useAlbumAssetMaxWidth'
 import { useDialogStatus } from '@/hooks/useDialogStatus'
 import { useAsset } from '@/hooks/useHttpAlbum'
 import { usePostPageQueryParams } from '@/hooks/usePostPageQueryParams'
+import { useAppDispatch } from '@/hooks/useRedux'
 import { hideGlobalLoading, showGlobalLoading } from '@/redux-actions'
 import type { Asset } from '@/types/album'
 import { getAssetSrc } from '@/utils/album'
@@ -18,7 +18,7 @@ export const useAssetDialog = () => {
     isReady: !!postPageQueryParams.qpAssetId,
     assetId: postPageQueryParams.qpAssetId!
   })
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { width: albumAssetMaxWidth } = useAlbumAssetMaxWidth()
 
   const handleClose = useCallback(() => {

@@ -30,7 +30,7 @@ describe('#AddPostButton', () => {
     jest.clearAllMocks()
   })
 
-  it("should render add button component if user's Apps.familyAlbum permission is admin or super admin", () => {
+  it("should render add button component if user's Apps.FAMILY_ALBUM permission is admin or super admin", () => {
     const { TestComponent } = setup({ isAdminOrAbove: true })
 
     render(<TestComponent />)
@@ -39,7 +39,7 @@ describe('#AddPostButton', () => {
     expect(mockButtonText).toBeInTheDocument()
   })
 
-  it("should render add button component if user's Apps.familyAlbum permission is not super admin or admin", () => {
+  it("should render add button component if user's Apps.FAMILY_ALBUM permission is not super admin or admin", () => {
     const { TestComponent } = setup({ isAdminOrAbove: false })
 
     render(<TestComponent />)

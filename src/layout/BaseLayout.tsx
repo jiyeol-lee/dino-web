@@ -1,76 +1,26 @@
-import type { ComponentType } from 'react'
 import type { FC, ReactNode } from 'react'
-import { useSelector } from 'react-redux'
 
-import type { Theme } from '@mui/material'
-import Backdrop from '@mui/material/Backdrop'
-import Box from '@mui/material/Box'
-import CircularProgress from '@mui/material/CircularProgress'
-import Paper from '@mui/material/Paper'
-import Toolbar from '@mui/material/Toolbar'
-
-import { selectGlobalLoadingState } from '@/redux-selectors'
-
-import Header from './Header/Header'
-import SettingsDrawer from './SettingsDrawer/SettingsDrawer'
-import SidebarNavDrawer from './SidebarNavDrawer/SidebarNavDrawer'
-import { useInitializeApp } from './useInitializeApp'
+import { Header } from './Header/Header'
+import { PageLoading } from './PageLoading/PageLoading'
 
 interface BaseLayoutProps {
-  DrawerContent?: ComponentType
   children: ReactNode
 }
 
-const BaseLayout: FC<BaseLayoutProps> = ({ DrawerContent, children }) => {
-  const { isInitialized } = useInitializeApp()
-  const isLoadingGlobally = useSelector(selectGlobalLoadingState)
-
+export const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
   return (
-    <Box className="__d-flex">
-      <Header hasSidebarNav={!!DrawerContent} />
+    <div className="flex">
+      <Header />
 
-      {!!DrawerContent && <SidebarNavDrawer DrawerContent={DrawerContent} />}
+      <main className="flex-grow h-screen">
+        <div className="__header-height"></div>
 
-      <SettingsDrawer />
-
-      <Box className="__d-grow __d-h-screen" component="main">
-        <Toolbar />
-
-        <Paper
-          elevation={0}
-          square={true}
-          className="__d-overflow-hidden"
-          sx={{ height: (theme) => `calc(100% - ${theme.spacing(8)})` }}
-        >
+        <div className="overflow-hidden h-[calc(100%-theme(space.16))] bg-surface-0 dark:bg-dark-surface-0">
           {children}
-        </Paper>
-      </Box>
+        </div>
+      </main>
 
-      <Paper
-        elevation={0}
-        square={true}
-        className={
-          `__d-backdrop-paper` +
-          (isInitialized ? ' __d-backdrop-paper--initialized' : '')
-        }
-      >
-        <Backdrop
-          sx={{ color: (theme: Theme) => theme.palette.secondary.main }}
-          open={true}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      </Paper>
-
-      <Backdrop
-        className="__d-global-loading-backdrop"
-        sx={{ color: (theme: Theme) => theme.palette.secondary.main }}
-        open={isLoadingGlobally}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
-    </Box>
+      <PageLoading />
+    </div>
   )
 }
-
-export default BaseLayout

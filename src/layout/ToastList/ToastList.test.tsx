@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import { config } from 'react-transition-group'
 
 import { AlertColor } from '@/constants/app'
+import { useAppDispatch } from '@/hooks/useRedux'
 import { enqueueAlert } from '@/redux-actions'
 import { act, render, screen } from '@/utils/testing-library'
 
@@ -17,7 +17,7 @@ const setup = () => {
   const fakeMessage1 = 'FAKE_MESSAGE_1'
   const fakeMessage2 = 'FAKE_MESSAGE_2'
   const TestComponent = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
       dispatch(enqueueAlert(severity, fakeMessage1))

@@ -17,57 +17,24 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/mock-data/*": [
-        "./src/__mocks__/data/*"
-      ],
-      "@/layout/*": [
-        "./src/layout/*"
-      ],
-      "@/types": [
-        "./src/types/app"
-      ],
-      "@/types/*": [
-        "./src/types/*"
-      ],
-      "@/http-services/*": [
-        "./src/http-services/*"
-      ],
-      "@/constants/*": [
-        "./src/constants/*"
-      ],
-      "@/components/*": [
-        "./src/components/*"
-      ],
-      "@/pages/*": [
-        "./src/pages/*"
-      ],
-      "@/hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@/utils": [
-        "./src/utils/index"
-      ],
-      "@/utils/*": [
-        "./src/utils/*"
-      ],
-      "@/models/*": [
-        "./src/models/*"
-      ],
-      "@/redux-store": [
-        "./src/redux/store"
-      ],
-      "@/redux-types": [
-        "./src/redux/types"
-      ],
-      "@/redux-types/*": [
-        "./src/redux/types/*"
-      ],
-      "@/redux-selectors": [
-        "./src/redux/selectors"
-      ],
-      "@/redux-actions": [
-        "./src/redux/actions"
-      ]
+      "@/mock-data/*": ["./src/__mocks__/data/*"],
+      "@/layout/*": ["./src/layout/*"],
+      "@/types": ["./src/types/app"],
+      "@/types/*": ["./src/types/*"],
+      "@/http-services/*": ["./src/http-services/*"],
+      "@/url-services/*": ["./src/url-services/*"],
+      "@/constants/*": ["./src/constants/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/utils": ["./src/utils/index"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/models/*": ["./src/models/*"],
+      "@/redux-store": ["./src/redux/store"],
+      "@/redux-types": ["./src/redux/types"],
+      "@/redux-types/*": ["./src/redux/types/*"],
+      "@/redux-selectors": ["./src/redux/selectors"],
+      "@/redux-actions": ["./src/redux/actions"]
     }
   },
   "include": ["next-env.d.ts", "environment.d.ts", "**/*.ts", "**/*.tsx"],

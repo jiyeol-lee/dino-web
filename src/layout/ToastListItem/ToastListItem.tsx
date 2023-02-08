@@ -1,16 +1,16 @@
 import { useEffect } from 'react'
 import type { FC } from 'react'
-import { useDispatch } from 'react-redux'
 
 import Alert from '@mui/material/Alert'
 
+import { useAppDispatch } from '@/hooks/useRedux'
 import { deleteAlert } from '@/redux-actions'
 import type { ToastMessage } from '@/types'
 
 type ToastListItemProps = ToastMessage
 
 const ToastListItem: FC<ToastListItemProps> = ({ id, severity, message }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     setTimeout(() => {

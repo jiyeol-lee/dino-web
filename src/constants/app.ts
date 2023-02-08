@@ -37,11 +37,6 @@ export enum FileInputExtensions {
   MOV = 'video/quicktime'
 }
 
-export enum PaletteModes {
-  LIGHT = 'light',
-  DARK = 'dark'
-}
-
 export enum Locales {
   EN = 'en',
   KR = 'kr'
@@ -58,8 +53,13 @@ export enum AccessLevels {
 
 // NOTE: 496-1
 export enum Apps {
-  familyAlbum = 'fa',
-  moneyTracker = 'mt'
+  FAMILY_ALBUM = 'fa',
+  COMPONENTS = 'cp'
+}
+
+export enum Modules {
+  ADMIN = 'admin',
+  FAMILY_ALBUM = 'family-album'
 }
 
 export enum AlertColor {

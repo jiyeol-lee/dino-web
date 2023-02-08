@@ -2,13 +2,13 @@ import { useTranslation } from 'next-i18next'
 import type { TFunction } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
-import { useDispatch } from 'react-redux'
 
 import Avatar from '@mui/material/Avatar'
 import type { GridColDef } from '@mui/x-data-grid'
 
 import { AccessLevels, AlertColor, Apps } from '@/constants/app'
 import { useIsAdminOrAbove } from '@/hooks/usePermission'
+import { useAppDispatch } from '@/hooks/useRedux'
 import { useUserAccessLevel } from '@/hooks/useUserAccessLevel'
 import adminUserHttpService from '@/http-services/adminUser'
 import { enqueueAlert } from '@/redux-actions'
@@ -43,7 +43,7 @@ const getSuperAdminPermissionOptions = (t: TFunction) =>
 
 export const useRowsAndCols = () => {
   const router = useRouter()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { t } = useTranslation()
   const [rows, setRows] = useState<User[]>([])
   const [isLoading, setLoading] = useState<boolean>(false)

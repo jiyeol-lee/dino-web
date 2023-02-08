@@ -4,9 +4,7 @@ import { generateUuid } from '@/utils/app'
 
 const initialState: State = {
   isLoading: false,
-  toastMessages: [],
-  isSidebarNavOpen: false,
-  isSettingNavOpen: false
+  toastMessages: []
 }
 
 const reducer = (state: State = initialState, action: Action) => {
@@ -35,27 +33,6 @@ const reducer = (state: State = initialState, action: Action) => {
         toastMessages: state.toastMessages.filter(
           (toastMessage) => toastMessage.id !== action.id
         )
-      }
-    }
-
-    case ActionType.UPDATE_SIDEBAR_NAV_OPEN_STATUS: {
-      return {
-        ...state,
-        isSidebarNavOpen: action.status
-      }
-    }
-
-    case ActionType.TOGGLE_SIDEBAR_NAV_OPEN_STATUS: {
-      return {
-        ...state,
-        isSidebarNavOpen: !state.isSidebarNavOpen
-      }
-    }
-
-    case ActionType.UPDATE_SETTING_NAV_OPEN_STATUS: {
-      return {
-        ...state,
-        isSettingNavOpen: action.status
       }
     }
 

@@ -22,7 +22,7 @@ export default async function handler(
       appAbbreviation: Apps
       assetId: unknown
     }
-    if (appAbbreviation !== Apps.familyAlbum) {
+    if (appAbbreviation !== Apps.FAMILY_ALBUM) {
       return res.status(400).json({ message: 'SEM_QUERY_NOT_ALLOWED' })
     }
 

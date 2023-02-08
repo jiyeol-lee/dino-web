@@ -37,10 +37,4 @@ declare module 'next-auth' {
   }
 }
 
-declare module 'react-redux' {
-  export function useDispatch():
-    | ThunkDispatch<RootState, void, AnyAction>
-    | Dispatch<AnyAction>
-}
-
 export {}

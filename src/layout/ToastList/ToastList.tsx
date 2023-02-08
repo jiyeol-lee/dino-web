@@ -1,6 +1,5 @@
 import type { FC } from 'react'
 import { memo } from 'react'
-import { useSelector } from 'react-redux'
 import { TransitionGroup } from 'react-transition-group'
 
 import type { Theme } from '@mui/material'
@@ -8,11 +7,12 @@ import Collapse from '@mui/material/Collapse'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/system/Box'
 
+import { useAppSelector } from '@/hooks/useRedux'
 import ToastListItem from '@/layout/ToastListItem/ToastListItem'
 import { selectToastMessages } from '@/redux-selectors'
 
 const ToastList: FC = () => {
-  const toastMessages = useSelector(selectToastMessages)
+  const toastMessages = useAppSelector(selectToastMessages)
 
   return (
     <Stack

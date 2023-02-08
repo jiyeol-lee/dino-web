@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
 import type { FC } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
 import LinearProgress from '@mui/material/LinearProgress'
 
+import { useAppDispatch, useAppSelector } from '@/hooks/useRedux'
 import { resetPostUploadStatus } from '@/redux-actions'
 import { selectPostUploadProgress } from '@/redux-selectors'
 
 export const PostFormDialogProgressBar: FC = () => {
-  const progress = useSelector(selectPostUploadProgress)
-  const dispatch = useDispatch()
+  const progress = useAppSelector(selectPostUploadProgress)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     return () => {

@@ -3,8 +3,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import type { ReactElement } from 'react'
 
 import { ErrorPage } from '@/components/shared/ErrorPage/ErrorPage'
-import ErrorLayout from '@/layout/ErrorLayout'
-import RootLayout from '@/layout/RootLayout'
+import { ErrorLayout } from '@/layout/ErrorLayout'
+import { RootLayout } from '@/layout/RootLayout'
 import type { NextPageWithLayout } from '@/pages/_app'
 
 const Page: NextPageWithLayout = () => {

@@ -68,7 +68,7 @@ describe('#usePermisison', () => {
     it('should return false if the user is not logged in', () => {
       const result = setup({
         isLogin: false,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.NONE,
         type: SetupType.useIsSuperAdmin
       })
@@ -90,7 +90,7 @@ describe('#usePermisison', () => {
     it('should return false if the user is not super admin', () => {
       const result1 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.NONE,
         type: SetupType.useIsSuperAdmin
       })
@@ -99,7 +99,7 @@ describe('#usePermisison', () => {
 
       const result2 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.EDITOR,
         type: SetupType.useIsSuperAdmin
       })
@@ -108,7 +108,7 @@ describe('#usePermisison', () => {
 
       const result3 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.ADMIN,
         type: SetupType.useIsSuperAdmin
       })
@@ -117,7 +117,7 @@ describe('#usePermisison', () => {
 
       const result4 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.SUPER_ADMIN,
         type: SetupType.useIsSuperAdmin
       })
@@ -134,7 +134,7 @@ describe('#usePermisison', () => {
     it('should return false if the user is not logged in', () => {
       const result = setup({
         isLogin: false,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.NONE,
         type: SetupType.useIsAdminOrAbove
       })
@@ -156,7 +156,7 @@ describe('#usePermisison', () => {
     it('should return false if the user is not admin or super admin', () => {
       const result1 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.NONE,
         type: SetupType.useIsAdminOrAbove
       })
@@ -165,7 +165,7 @@ describe('#usePermisison', () => {
 
       const result2 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.EDITOR,
         type: SetupType.useIsAdminOrAbove
       })
@@ -174,7 +174,7 @@ describe('#usePermisison', () => {
 
       const result3 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.ADMIN,
         type: SetupType.useIsAdminOrAbove
       })
@@ -183,7 +183,7 @@ describe('#usePermisison', () => {
 
       const result4 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.SUPER_ADMIN,
         type: SetupType.useIsAdminOrAbove
       })
@@ -200,7 +200,7 @@ describe('#usePermisison', () => {
     it('should return false if the user is not logged in', () => {
       const result = setup({
         isLogin: false,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.NONE,
         type: SetupType.useIsEditorOrAbove
       })
@@ -222,7 +222,7 @@ describe('#usePermisison', () => {
     it('should return false if the user is not editor or admin or super admin', () => {
       const result1 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.NONE,
         type: SetupType.useIsEditorOrAbove
       })
@@ -231,7 +231,7 @@ describe('#usePermisison', () => {
 
       const result2 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.EDITOR,
         type: SetupType.useIsEditorOrAbove
       })
@@ -240,7 +240,7 @@ describe('#usePermisison', () => {
 
       const result3 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.ADMIN,
         type: SetupType.useIsEditorOrAbove
       })
@@ -249,7 +249,7 @@ describe('#usePermisison', () => {
 
       const result4 = setup({
         isLogin: true,
-        appAbbreviation: Apps.familyAlbum,
+        appAbbreviation: Apps.FAMILY_ALBUM,
         accessLevel: AccessLevels.SUPER_ADMIN,
         type: SetupType.useIsEditorOrAbove
       })

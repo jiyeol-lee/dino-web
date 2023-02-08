@@ -13,7 +13,7 @@ import type {
 const albumHttpService = {
   getCategoriesUrl() {
     return `${process.env.PAGE_URL ?? ''}/api/app/${
-      Apps.familyAlbum
+      Apps.FAMILY_ALBUM
     }/album/category`
   },
   async createCategory(
@@ -25,7 +25,7 @@ const albumHttpService = {
     return axios
       .post<Category>(
         `${process.env.PAGE_URL ?? ''}/api/app/${
-          Apps.familyAlbum
+          Apps.FAMILY_ALBUM
         }/album/category`,
         data.values,
         config
@@ -42,7 +42,7 @@ const albumHttpService = {
     return axios
       .put<Category>(
         `${process.env.PAGE_URL ?? ''}/api/app/${
-          Apps.familyAlbum
+          Apps.FAMILY_ALBUM
         }/album/category/${data.id}`,
         data.values,
         config
@@ -58,7 +58,7 @@ const albumHttpService = {
     return axios
       .delete<Category>(
         `${process.env.PAGE_URL ?? ''}/api/app/${
-          Apps.familyAlbum
+          Apps.FAMILY_ALBUM
         }/album/category/${data.id}`,
         config
       )
@@ -66,7 +66,7 @@ const albumHttpService = {
   },
   getPostsTotalUrl(data: { qpCategoryId?: string } = {}) {
     return `${process.env.PAGE_URL ?? ''}/api/app/${
-      Apps.familyAlbum
+      Apps.FAMILY_ALBUM
     }/album/post/total?${
       data.qpCategoryId ? `qpCategoryId=${data.qpCategoryId}` : ''
     }`
@@ -74,7 +74,7 @@ const albumHttpService = {
   getPostsUrl(data: { qpPage: number; qpCategoryId?: string }) {
     return (
       `${process.env.PAGE_URL ?? ''}/api/app/${
-        Apps.familyAlbum
+        Apps.FAMILY_ALBUM
       }/album/post?qpPage=${data.qpPage}` +
       (data.qpCategoryId ? `&qpCategoryId=${data.qpCategoryId}` : '')
     )
@@ -92,7 +92,7 @@ const albumHttpService = {
   ): Promise<Post> {
     return axios
       .post<Post>(
-        `${process.env.PAGE_URL ?? ''}/api/app/${Apps.familyAlbum}/album/post`,
+        `${process.env.PAGE_URL ?? ''}/api/app/${Apps.FAMILY_ALBUM}/album/post`,
         data.values,
         config
       )
@@ -107,9 +107,9 @@ const albumHttpService = {
   ): Promise<Post> {
     return axios
       .put<Post>(
-        `${process.env.PAGE_URL ?? ''}/api/app/${Apps.familyAlbum}/album/post/${
-          data.id
-        }`,
+        `${process.env.PAGE_URL ?? ''}/api/app/${
+          Apps.FAMILY_ALBUM
+        }/album/post/${data.id}`,
         data.values,
         config
       )
@@ -123,16 +123,16 @@ const albumHttpService = {
   ): Promise<Post> {
     return axios
       .delete<Post>(
-        `${process.env.PAGE_URL ?? ''}/api/app/${Apps.familyAlbum}/album/post/${
-          data.id
-        }`,
+        `${process.env.PAGE_URL ?? ''}/api/app/${
+          Apps.FAMILY_ALBUM
+        }/album/post/${data.id}`,
         config
       )
       .then((res) => res.data)
   },
   getAssetUrl(data: { id: string }) {
     return `${process.env.PAGE_URL ?? ''}/api/app/${
-      Apps.familyAlbum
+      Apps.FAMILY_ALBUM
     }/album/asset/${data.id}`
   },
   async getAsset(

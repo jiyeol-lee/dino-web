@@ -22,7 +22,7 @@ describe('#useUserAccessLevel', () => {
 
   it('should return AccessLevels.NONE if user is not valid', () => {
     ;(useRouter as jest.Mock).mockReturnValue({
-      query: { appAbbreviation: Apps.familyAlbum }
+      query: { appAbbreviation: Apps.FAMILY_ALBUM }
     })
 
     const { result } = renderHook(() => useUserAccessLevel())
@@ -32,10 +32,10 @@ describe('#useUserAccessLevel', () => {
 
   it("should return user's AccessLevels", () => {
     ;(useRouter as jest.Mock).mockReturnValue({
-      query: { appAbbreviation: Apps.familyAlbum }
+      query: { appAbbreviation: Apps.FAMILY_ALBUM }
     })
     const mockUser = getMockUser()
-    mockUser.accessLevel[Apps.familyAlbum] = AccessLevels.EDITOR
+    mockUser.accessLevel[Apps.FAMILY_ALBUM] = AccessLevels.EDITOR
     ;(useCurrentUser as jest.Mock).mockReturnValue({ user: mockUser })
 
     const { result } = renderHook(() => useUserAccessLevel())

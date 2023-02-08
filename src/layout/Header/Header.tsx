@@ -1,87 +1,34 @@
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
+import { compose } from 'ramda'
 import type { FC } from 'react'
-import { useDispatch } from 'react-redux'
 
-import MenuIcon from '@mui/icons-material/Menu'
-import SettingsIcon from '@mui/icons-material/Settings'
-import type { Theme } from '@mui/material'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Toolbar from '@mui/material/Toolbar'
+import { Button } from '@/components/shared/Button/Button'
+import { HeaderAuth } from '@/layout/HeaderAuth/HeaderAuth'
+import { withSignInOutHandler } from '@/layout/HeaderAuth/withSignInOutController'
+import { HeaderLanguage } from '@/layout/HeaderLanguage/HeaderLanguage'
 
-import { TooltipIconButton } from '@/components/shared/TooltipIconButton/TooltipIconButton'
-import {
-  setSettingNavOpenStatus,
-  toggleSidebarNavOpenStatus
-} from '@/redux-actions'
+const HeaderAuthContainer = compose(withSignInOutHandler)(HeaderAuth)
 
-import AuthStatusButton from './AuthStatusButton/AuthStatusButton'
-import headerButtonMixin from './headerButtonMixin'
-
-interface HeaderProps {
-  hasSidebarNav: boolean
-}
-
-const Header: FC<HeaderProps> = ({ hasSidebarNav }) => {
-  const { t } = useTranslation('common')
-  const dispatch = useDispatch()
+export const Header: FC = () => {
+  const { t } = useTranslation()
 
   return (
-    <Box>
-      <AppBar
-        color="inherit"
-        position="fixed"
-        sx={{ zIndex: (theme: Theme) => theme.zIndex.drawer + 1 }}
-      >
-        <Toolbar>
-          {hasSidebarNav && (
-            <TooltipIconButton
-              title={t('MAIN_MENU')}
-              iconButtonProps={{
-                sx: { color: headerButtonMixin },
-                onClick: () => {
-                  dispatch(toggleSidebarNavOpenStatus())
-                }
-              }}
-            >
-              <MenuIcon />
-            </TooltipIconButton>
-          )}
+    <div className="fixed bg-surface-1 dark:bg-dark-surface-1 z-app-toolbar w-full sm:px-6 __header-height flex drop-shadow-lg">
+      <Link href="/" passHref legacyBehavior>
+        <a className="flex items-center">
+          <Button
+            className="hover:!bg-transparent !p-2.5"
+            label={t('APP_NAME')}
+          />
+        </a>
+      </Link>
 
-          <Link href="/">
-            <Button
-              disableRipple
-              sx={[
-                { color: headerButtonMixin },
-                { '&:hover': { backgroundColor: 'transparent' } }
-              ]}
-            >
-              {t('APP_NAME')}
-            </Button>
-          </Link>
-          <Box className="__d-grow __d-flex __d-justify-end">
-            <AuthStatusButton />
+      <div className="flex-grow flex justify-end items-center">
+        <HeaderAuthContainer />
 
-            <Box sx={{ ml: 2 }}>
-              <TooltipIconButton
-                title={t('TOGGLE_SETTINGS_DRAWER')}
-                iconButtonProps={{
-                  sx: { color: headerButtonMixin },
-                  onClick: () => {
-                    dispatch(setSettingNavOpenStatus(true))
-                  }
-                }}
-              >
-                <SettingsIcon />
-              </TooltipIconButton>
-            </Box>
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </Box>
+        <HeaderLanguage />
+      </div>
+    </div>
   )
 }
-
-export default Header

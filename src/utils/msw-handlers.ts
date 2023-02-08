@@ -8,7 +8,7 @@ export const MOCK_RESPONSE_DELAY = 100
 export const FAKE_RETURN = { message: 'FAKE_MESSAGE' }
 
 const mockAssetHandler = rest.get(
-  `/api/app/${Apps.familyAlbum}/album/asset/:assetId`,
+  `/api/app/${Apps.FAMILY_ALBUM}/album/asset/:assetId`,
   (_, response, context) => {
     return response(
       context.delay(MOCK_RESPONSE_DELAY),
@@ -19,7 +19,7 @@ const mockAssetHandler = rest.get(
 )
 
 export const mockAssetHandlerException = rest.get(
-  `/api/app/${Apps.familyAlbum}/album/asset/:assetId`,
+  `/api/app/${Apps.FAMILY_ALBUM}/album/asset/:assetId`,
   (_, response, context) => {
     return response(
       context.delay(MOCK_RESPONSE_DELAY),

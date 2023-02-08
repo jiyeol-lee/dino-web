@@ -4,41 +4,30 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
 
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
-
-import { Apps } from '@/constants/app'
+import { Button } from '@/components/shared/Button/Button'
+import { Modules } from '@/constants/app'
 import { useCurrentUser } from '@/hooks/useHttpApp'
-import BaseLayout from '@/layout/BaseLayout'
-import RootLayout from '@/layout/RootLayout'
+import { BaseLayout } from '@/layout/BaseLayout'
+import { RootLayout } from '@/layout/RootLayout'
 import type { NextPageWithLayout } from '@/pages/_app'
+import { adminUrlService } from '@/url-services/admin'
+import { familyAlbumUrlService } from '@/url-services/family-album'
 import { hasAccessAdminPage } from '@/utils/app'
 
-const appList = [
+const pages = [
   {
     link: {
-      // default to admin family album users
-      pathname: `/app/${Apps.familyAlbum}/admin/user/list`
+      pathname: adminUrlService.index(Modules.FAMILY_ALBUM)
     },
-    name: 'APP_NAME_ADMIN',
+    name: 'HOME_PAGE_ADMIN_BUTTON',
     shouldAdmin: true,
     needAuth: true
   },
   {
     link: {
-      pathname: `/app/${Apps.familyAlbum}/album`
+      pathname: familyAlbumUrlService.index()
     },
-    name: 'APP_NAME_FAMILY_ALBUM',
-    shouldAdmin: false,
-    needAuth: true
-  },
-  {
-    link: {
-      pathname: `/app/${Apps.moneyTracker}/doc/fixed-income`
-    },
-    name: 'APP_NAME_MONEY_TRACKER',
+    name: 'HOME_PAGE_FAMILY_ALBUM_BUTTON',
     shouldAdmin: false,
     needAuth: true
   }
@@ -51,39 +40,46 @@ const Page: NextPageWithLayout = () => {
   const canAccessAdminPage = hasAccessAdminPage(user)
 
   return (
-    <Container>
-      <Typography variant="h3">{t('HOME_PAGE_TITLE')}</Typography>
-      <Typography variant="h6">{t('HOME_PAGE_DESCRIPTION')}</Typography>
+    <div className="container">
+      <p className="text-5xl my-2">
+        {t('HOME_PAGE_TITLE', { appName: t('APP_NAME') })}
+      </p>
 
-      <Box sx={{ mt: 2 }}>
-        {appList.map((app) => {
-          if (!canAccessAdminPage && app.shouldAdmin) {
+      <div className="mt-5 inline-flex space-x-2">
+        {pages.map((page) => {
+          if (!canAccessAdminPage && page.shouldAdmin) {
             return null
           }
 
-          if (app.needAuth && !user) {
+          if (page.needAuth && !user) {
             return (
               <Button
-                key={app.name}
-                variant="contained"
-                disabled
-                sx={{ mt: 1, ml: 1 }}
-              >
-                {t(app.name)}
-              </Button>
+                key={page.name}
+                type="button"
+                disabled={true}
+                variant="filled"
+                color="primary"
+                label={t(page.name)}
+              />
             )
           }
 
           return (
-            <Link key={app.name} href={app.link}>
-              <Button variant="contained" sx={{ mt: 1, ml: 1 }}>
-                {t(app.name)}
-              </Button>
+            <Link key={page.name} href={page.link} passHref legacyBehavior>
+              <a>
+                <Button
+                  key={page.name}
+                  type="button"
+                  variant="filled"
+                  color="primary"
+                  label={t(page.name)}
+                />
+              </a>
             </Link>
           )
         })}
-      </Box>
-    </Container>
+      </div>
+    </div>
   )
 }
 

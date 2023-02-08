@@ -1,11 +1,13 @@
-import type { State as AppState } from './app'
-import type { State as PostState } from './post'
-import type { State as ProjectState } from './project'
-import type { State as SettingState } from './setting'
+import { store } from '@/redux-store'
+import type { AnyAction, ThunkAction } from '@reduxjs/toolkit'
 
-export interface RootState {
-  app: AppState
-  post: PostState
-  project: ProjectState
-  setting: SettingState
-}
+export type RootState = ReturnType<typeof store.getState>
+
+export type AppDispatch = typeof store.dispatch
+
+export type AppThunk<Action, ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action extends AnyAction ? Action : never
+>

@@ -1,45 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-@import 'parts/variables';
-@import 'parts/flex';
-@import 'parts/position';
-@import 'parts/size';
-@import 'parts/cursor';
-@import 'parts/overflow';
-@import 'parts/typography';
-@import 'parts/object-fit';
-@import 'parts/opacity';
-@import 'parts/whitespace';
-@import 'mui-overwrite';
+// @import 'parts/variables';
+// @import 'parts/flex';
+// @import 'parts/position';
+// @import 'parts/size';
+// @import 'parts/cursor';
+// @import 'parts/overflow';
+// @import 'parts/typography';
+// @import 'parts/object-fit';
+// @import 'parts/opacity';
+// @import 'parts/whitespace';
+// @import 'mui-overwrite';
 
-* {
-  box-sizing: border-box;
+@layer base {
+  .__header-height {
+    @apply min-h-[3rem] sm:min-h-[4rem];
+  }
+
+  .__backdrop {
+    @apply bg-surface-0 dark:bg-dark-surface-0 fixed left-0 top-0 w-screen h-screen flex justify-center items-center;
+
+    &.__backdrop--opacity-50 {
+      @apply bg-surface-0/50 dark:bg-dark-surface-0/50;
+    }
+  }
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
+$colors: 'primary', 'secondary', 'success', 'danger', 'warning', 'info',
+  'default';
 
-.__d-global-loading-backdrop {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: var(--zindex__backdrop--global-loading);
-}
+@layer components {
+  .__button {
+    @apply focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center disabled:opacity-70 space-x-2;
 
-.__d-backdrop-paper {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: var(--zindex__backdrop--global-loading);
+    @each $color in $colors {
+      @if $color == default {
+        &.__button-default {
+          &.__button-filled {
+            @apply text-black bg-gray-200 dark:text-white dark:bg-gray-600;
 
-  &--initialized {
-    z-index: -1;
+            &:not(:disabled) {
+              @apply hover:bg-gray-300 dark:hover:bg-gray-700;
+            }
+          }
+
+          &.__button-outlined {
+            @apply text-black bg-transparent border border-gray-700 dark:text-white dark:border-gray-200;
+
+            &:not(:disabled) {
+              @apply hover:bg-gray-200 dark:hover:bg-gray-700;
+            }
+          }
+        }
+      } @else {
+        &.__button-#{$color} {
+          &.__button-filled {
+            @apply text-white bg-#{$color} dark:bg-#{$color}-dark;
+
+            &:not(:disabled) {
+              @apply hover:bg-#{$color}-hover dark:hover:bg-#{$color}-dark-hover;
+            }
+          }
+
+          &.__button-outlined {
+            @apply text-#{$color} border border-#{$color} dark:border-#{$color}-dark dark:text-#{$color}-dark;
+
+            &:not(:disabled) {
+              @apply hover:text-white hover:bg-#{$color}-hover dark:hover:text-white dark:hover:bg-#{$color}-dark-hover;
+            }
+          }
+        }
+      }
+    }
   }
 }

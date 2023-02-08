@@ -7,6 +7,15 @@ export type AxiosRequestConfig = _AxiosRequestConfig<any>
 
 export type ExceptId<T> = Omit<T, '_id'>
 
+export type Color =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'danger'
+  | 'warning'
+  | 'info'
+  | 'default'
+
 interface AccessUser {
   accessUserId: string
   accessLevel: AccessLevels

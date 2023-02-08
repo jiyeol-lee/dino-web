@@ -1,6 +1,5 @@
-import { useSelector } from 'react-redux'
-
 import { usePostPageQueryParams } from '@/hooks/usePostPageQueryParams'
+import { useAppSelector } from '@/hooks/useRedux'
 import { getMockAsset } from '@/mock-data/post.mockData'
 import { selectGlobalLoadingState } from '@/redux-selectors'
 import { mockAssetUrlHandlerException } from '@/utils/msw-handlers'
@@ -21,7 +20,7 @@ jest.mock('@/hooks/usePostPageQueryParams', () => {
 
 const setup = () => {
   const useTestHook = () => {
-    const isLoadingGlobally = useSelector(selectGlobalLoadingState)
+    const isLoadingGlobally = useAppSelector(selectGlobalLoadingState)
     const assetDialog = useAssetDialog()
 
     return {

@@ -19,7 +19,7 @@ export default async function handler(
     const token = await getToken({ req })
     const currentUserId = token!.sub!
     const appAbbreviation = req.query.appAbbreviation as Apps
-    if (appAbbreviation !== Apps.familyAlbum) {
+    if (appAbbreviation !== Apps.FAMILY_ALBUM) {
       return res.status(400).json({ message: 'SEM_QUERY_NOT_ALLOWED' })
     }
 
