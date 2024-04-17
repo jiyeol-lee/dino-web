@@ -48,6 +48,7 @@ export const SWRProvider: FC<PropsWithChildren<{ value?: Config }>> = (
     onError: () => {
       dispatch(enqueueAlert(AlertColor.ERROR, t('ERROR_ALERT_MESSAGE')))
     },
+    revalidateOnFocus: false,
     dedupingInterval: 0
   }
   return createElement(SWRConfig, { ...props, ...{ value: configValue } })
